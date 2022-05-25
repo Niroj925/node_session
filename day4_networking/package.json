@@ -1,0 +1,17 @@
+{
+  "name": "day4",
+  "version": "1.0.0",
+  "main": "server.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon ."
+  },
+  "dependencies": {
+    "@types/node": "^17.0.35",
+    "chalk": "^5.0.1",
+    "kill-port": "^2.0.0",
+    "nodemon": "^2.0.16",
+    "winston": "^3.7.2"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "day3",
+  "version": "1.0.0",
+  "main": "server.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node .",
+    "build": "babel src -d lib",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@types/node": "^17.0.35",
+    "nodemon": "^2.0.16"
+  }
+}

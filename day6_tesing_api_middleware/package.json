@@ -1,0 +1,17 @@
+{
+  "name": "day6",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon ."
+  },
+  "dependencies": {
+    "@types/express": "^4.17.13",
+    "@types/nodemon": "^1.19.1",
+    "express": "^4.18.1",
+    "express-rate-limit": "^6.4.0",
+    "helmet": "^5.1.0"
+  }
+}
