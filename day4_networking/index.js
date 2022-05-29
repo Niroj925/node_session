@@ -16,5 +16,5 @@ const logger=winston.createLogger({
 });
 logger.info({
     level:'warning',
-    message:'something going tto dangerous'
+    message:'something going to dangerous'
 });
