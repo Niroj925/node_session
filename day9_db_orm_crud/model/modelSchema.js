@@ -2,7 +2,7 @@ import { get } from 'https';
 import { DataTypes } from 'sequelize';
 import connection from './index.js';
 //users is new table which is created by orm
-const userModel= connection.define('user', {
+const userModel= connection.define('users', {
     //id is bydefault
    
     username:{
