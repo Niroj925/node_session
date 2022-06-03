@@ -29,6 +29,7 @@ const bookcontroller=new bookControl();
 
 router.post('/add',upload.single('image'),(req,res)=>{
     bookcontroller.addBook(req,res,imageName);
+    
 })
 
 //get data

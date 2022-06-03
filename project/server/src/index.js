@@ -1,10 +1,14 @@
 import express from 'express';
 import connection from './model/index.js';
 import bookRoute from './route/bookRoute.js';
+import cors from'cors';//for api
 import 'dotenv/config';
 
 const app = express();
-
+//this is for api from client side we have to do this
+app.use(cors({
+    origin:"*",
+}));
 //to pasrse the data from api in json formate into js object 
 //for our backend
 app.use(express.json());
@@ -12,6 +16,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended:false }));
 
 app.use('/book',bookRoute);
+//for static file to do not treat as a url route
+//so we can directly access as data not a route
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     res.send("backend is working");
