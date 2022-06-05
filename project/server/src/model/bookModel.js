@@ -1,7 +1,7 @@
 import connection from "./index.js";
 import {DataTypes} from "sequelize";
 
-
+//creat books table 
 export default connection.define('books',{
     name:{
         type:DataTypes.STRING,

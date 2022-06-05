@@ -7,7 +7,7 @@ import 'dotenv/config';
 const app = express();
 //this is for api from client side we have to do this
 app.use(cors({
-    origin:"*",
+    origin:"*",//this is for all url request 
 }));
 //to pasrse the data from api in json formate into js object 
 //for our backend
@@ -21,6 +21,7 @@ app.use('/book',bookRoute);
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
+    //send directly to the client
     res.send("backend is working");
 })
 
@@ -28,7 +29,7 @@ app.listen(process.env.PORT||8000,async()=>{
     console.log('server is running');
 try{
     await connection.authenticate();
-    //to make to if not exist
+    //to make table if not exist
     connection.sync();
     console.log('successfully connected to the database');
 }catch(err){

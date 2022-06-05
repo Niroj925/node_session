@@ -14,12 +14,12 @@ function App(){
         <Routes>
             <Route path='/' element={<Homepage/>}/>
             <Route path='/explore' element={<Explore/>}/>
-           <Route path='/booklist' element={<Listbook/>}/>
-         
-
+      
             <Route path='/dashboard'>
                 <Route index element={<Dashboard/>} />
                 <Route path='addbook' element={<AddBook/>}/>
+                     <Route path='booklist' element={<Listbook/>}/>
+
                 </Route>
             
             <Route path='*' element={<div>Error 404 Page not found</div>}/>
