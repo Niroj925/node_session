@@ -1,9 +1,11 @@
 <html>
-<head>
-    <title><%- title%></title> 
-    <link rel="stylesheet" href="/css/home.css">
-</head>
+<%- include("partial/header") %>
 <body>
-    <h2>About us</h2>
+    <%if(service.length>0){%>
+    <%service.map(service=>{%>
+        <li><%-service%></li>
+   <% })}else{%>
+      <p> no service available</p>
+    <%}%>
 </body>
 </html>
