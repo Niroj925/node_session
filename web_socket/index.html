@@ -23,10 +23,13 @@
   </body>
   <!-- to make web socket in client side this will communicate in server so it is bidirectional -->
   <script src="/socket.io/socket.io.js"></script>
+  
 <script>
+  //take input
+  var name=prompt('enter your name:');
 
   var socket = io();
-
+  
   var messages = document.getElementById('messages');
   var form = document.getElementById('form');
   var input = document.getElementById('input');
@@ -34,16 +37,19 @@
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     if (input.value) {
-      socket.emit('chat message', input.value);
+      //emit means to send  event from client  to the server 
+      //send input value to the server 
+      socket.emit('chat message', {name,message:input.value});//we can pass object 
       input.value = '';
     }
   });
-
-  socket.on('chat message', function(msg) {
+//to receive data from server and display message on client
+  socket.on('chat message', function(data) {
     var item = document.createElement('li');
-    item.textContent = msg;
+    item.textContent = data.name+':'+data.message;
     messages.appendChild(item);
     window.scrollTo(0, document.body.scrollHeight);
   });
+
 </script>
 </html>
