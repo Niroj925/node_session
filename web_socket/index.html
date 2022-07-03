@@ -43,7 +43,8 @@
       input.value = '';
     }
   });
-//to receive data from server and display message on client
+//to receive data from server and display message on client to all
+//we can also make for particular but this is for all
   socket.on('chat message', function(data) {
     var item = document.createElement('li');
     item.textContent = data.name+':'+data.message;
