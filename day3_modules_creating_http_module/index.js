@@ -14,7 +14,7 @@ await fs.writeFile(
 //read created files
 //let us error handling
 try{
-let content=await fs.readFile('hellom.txt','utf-8');//it gives in buffer formate utf mean universal text formate
+let content=await fs.readFile('hello.txt','utf-8');//it gives in buffer formate utf mean universal text formate
 console.log(content);
 }catch(e){
     console.log(e);

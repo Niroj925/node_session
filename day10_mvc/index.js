@@ -13,7 +13,7 @@ const app = express();
 app.use(express.json());
 app.use('/usr',userRouter);
 
-app.listen(8000,async()=>{
+app.listen(8008,async()=>{
     console.log('server is running');
     //connecting to the database
     try {

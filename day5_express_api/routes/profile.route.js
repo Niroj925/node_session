@@ -13,12 +13,12 @@ router.get('/',function(req,res){
 router.get('/name/:parameters',function(req,res){
     console.log(req.params);
     
-    res.send('your name is niroj thapa ');
+    res.send('entered params parameter is : '+ req.params.parameters);
 })
 router.get('/delet',function(req,res){
     //if query send from client then print
     console.log(req.query);
-    //restructuring query 
+    //destructuring query 
     const{nam,age}=req.query;
     console.log(nam,age);
 

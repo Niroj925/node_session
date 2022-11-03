@@ -11,7 +11,7 @@ const requestlisten=function(req, res) {
 
           case "/others":
                res.writeHead(200);
-        res.end('hey your are in my site do not go others');
+        res.end('hey you are in my site do not go others');
              break;
 
              default:
