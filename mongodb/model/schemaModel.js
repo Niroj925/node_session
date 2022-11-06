@@ -12,5 +12,5 @@ const listSchema=new  mongoose.Schema({
 );
 //now make a model 
 const listModel=mongoose.model('list',listSchema);//list is a table
-
+// module.exports=listModel;
 export default listModel;

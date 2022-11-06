@@ -1,11 +1,18 @@
 import listModel  from "../model/schemaModel.js";
+import express from "express";
+const router= express.Router();
 
 export  default class BlogController{
     async addBlog(req, res) {
+        
+
+       const {title,description} = req.body
+       console.log(title);
         try {
+             
             const response = await listModel.create({
-                title: 'blog title 3',
-                description: 'blog description of modular microservice'
+                title: "title",
+                description: "description"
             });
             console.log('inserted one items');
             res.json(response);
@@ -17,12 +24,16 @@ export  default class BlogController{
         }
 }
 
+
 async getBlog(req, res) {
 
     //destructuring the patamater
     const {
         id
     } = req.params;
+
+   
+        console.log(id);
     try {
         const response = await listModel.findById(id);
         res.json(response);

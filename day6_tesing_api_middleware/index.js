@@ -4,9 +4,9 @@ import meroRoute from './route/profile.route.js';
 //for api request rate limit this is  also a middleware
 import rateLimit from 'express-rate-limit';
 
+//we can use helmet library to prevent from attack 
 const app = express();
 //to parse json formate data we have call these follwing express functions
-
 app.use(express.json());
 //to parse form-encoded data we  have call this function
 app.use(express.urlencoded({extended: true}));
@@ -21,20 +21,21 @@ app.use((req,res,next)=>{
 });
 
 //for limited requests in a certain period we have to make limit from express 
-
+//this a thirdparty middleware which restrict to many requests from same ip 
 const limiter=rateLimit({
 windows:15*60*100 ,//this is in each 15 minutes 
-max:50,//this is max 50 requests per 15 min 
+max:5,//this is max 50 requests per 15 min 
 standardHeader:true,
 legacyHeader:false
 })
 app.use(limiter);
 
 
-//if we provide  file in the from of url express take as route 
-//to access static file or folder from out project we have to do first 
+//if we provide  file in the form of url express take as route 
+//to access static file or folder from our project we have to do first 
 //we specify static folder of file to understand for express 
 //this is not route it's a static folder
+//this is a inbuilt middleware 
 app.use(express.static('public'));
 
 

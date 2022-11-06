@@ -22,7 +22,7 @@ app.use('/auth',authRoute);
 
 
 
-app.listen(process.env.PORT ||8080,async()=>{
+app.listen(process.env.PORT ||8000,async()=>{
     try{
         await connection.authenticate();
         console.log("connected to the db");

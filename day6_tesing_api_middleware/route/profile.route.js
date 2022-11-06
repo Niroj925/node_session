@@ -4,8 +4,10 @@ import validateToken from '../middleware/validationToken.js';
 
 const router=express.Router();
 //middleware
+//this is a router level middleware
 router.use((req,res,next)=>{
-    validateToken(req,res,next);
+    //next is used to after completed the function of the middleware to respond something 
+    validateToken(req,res, next);
 })
 //post method is use to get  data from body 
 router.get('/', function(req, res){
@@ -13,8 +15,9 @@ router.get('/', function(req, res){
 })
 //in post method we can pass query as well as body json data
 //middleware is kept before response here
-//for  multiple validation we can make a array for these middleware and pass this array 
-router.post('/add',validateToken, function(req, res){
+//for  multiple validation we can make a array for these middleware and pass this array like [vt,valid,...]
+//or we can make array of middleware const middleware =[validateToken,token,apitoken]
+router.post('/add',validateToken, function(req, res){//here validateToken is  a middleware so token is validate two times 
     //this data come from frontend and this function
     //this is in json formate so parse this data and catch
   console.log(req.body,req.query);
@@ -22,7 +25,8 @@ router.post('/add',validateToken, function(req, res){
 })
 router.get('/name/:parameters', function(req, res){
    console.log(req.params);
-    res.status(200).json({name:'niroj thapa'})
+    res.status(200).json(req.body);
+    console.log(req.body.name)
 })
 
 router.delete('/delete', function(req,res){
