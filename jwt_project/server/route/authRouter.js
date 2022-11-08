@@ -9,6 +9,6 @@ router.post ('/',authController.authenticate);
 
 router.post ('/addauth',authController.addUser);
 
-router.get('/listuser',validateToken, authController.listUser);
+router.get('/listuser', authController.listUser);
 
 export default router;
