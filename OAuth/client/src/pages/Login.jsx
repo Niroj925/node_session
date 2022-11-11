@@ -8,13 +8,13 @@ import axios from 'axios';
 function login() {
     const googleAuth=async()=>{
         window.open(
-            "http://localhost:8080/OAuth/auth/google",
+            "http://localhost:8080/auth/google",
             "_self"
         )
    
     }
 const check=async()=>{
-  const {data}=await axios.get("http://localhost:8080/OAuth/auth")
+  const {data}=await axios.get("http://localhost:8080/auth")
   console.log(data);
 }
   return (

@@ -41,7 +41,7 @@ app.use(session({
       req.user?next():res.sendStatus(401)//401 mean unauthorize
   }
 
-app.use('/OAuth',authRouter)
+app.use('/auth',authRouter)
 
 // app.get('/',(req,res)=>{
 //     res.send('<a href="auth/google">sign up with google</a>');

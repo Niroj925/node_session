@@ -3,7 +3,7 @@ import passport from 'passport';
 
 const router=Router();
 
-router.get('/auth',(req,res)=>{
+router.get('/',(req,res)=>{
     const response={"success":"hit server"}
 res.json(response)
 console.log(response)
@@ -16,6 +16,8 @@ router.get("/login/success",(req,res)=>{
             error:false,
             msg:"successfully login",
             user:req.user
+            //cookies:req.cookies
+            //jwt
         })
     }else{
         res.status(403).json({error:true,msg:"user not authorized"})
@@ -29,14 +31,14 @@ router.get('/login/failed',(req,res)=>{
         msg:"login failed"
     })
 })
-router.get('/auth/google',
+router.get('/google',
 passport.authenticate("google",{scope:['profile','email']}))
 
 
 //this is a callback function this will immediately redirect and call this function
-router.get('OAuth/auth/google/callback',
+router.get('/google/callback',
 passport.authenticate('google',{
-    successRedirect:'/login/success' ,
+    successRedirect:'http://localhost:3000/login' ,
     failureRedirect:'/login/failed'
 })
 )
