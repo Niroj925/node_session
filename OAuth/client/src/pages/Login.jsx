@@ -6,11 +6,12 @@ import {loginSchema} from '../userSchema/userLoginschema';
 import axios from 'axios';
 
 function login() {
-    const googleAuth=()=>{
+    const googleAuth=async()=>{
         window.open(
             "http://localhost:8080/OAuth/auth/google",
             "_self"
         )
+   
     }
 const check=async()=>{
   const {data}=await axios.get("http://localhost:8080/OAuth/auth")
@@ -51,6 +52,7 @@ const check=async()=>{
         }}
 
       </Formik>
+      
 
       <button onClick={check}>check</button>
     </div>

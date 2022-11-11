@@ -30,14 +30,20 @@ router.get('/login/failed',(req,res)=>{
     })
 })
 router.get('/auth/google',
-passport.authenticate("google",['profile','email']))
+passport.authenticate("google",{scope:['profile','email']}))
+
 
 //this is a callback function this will immediately redirect and call this function
-router.get('/auth/google/callback',
+router.get('OAuth/auth/google/callback',
 passport.authenticate('google',{
-    successRedirect:'/login/success',
-    failureRedirect:'/auth.err'
+    successRedirect:'/login/success' ,
+    failureRedirect:'/login/failed'
 })
 )
+
+router.get('/logout',(req,res)=>{
+    req.logout();
+    res.redirect('http://localhost:3000')
+})
 
 export default router;

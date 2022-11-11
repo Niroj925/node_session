@@ -11,9 +11,9 @@ function App() {
   const [user,setUser]=useState(null);
   const getUser=async ()=>{
     try{
-    const url='http://localhost:8080/OAuth/auth/google'
+    const url='http://localhost:8080/OAuth/login/success'
    const {data}= await axios.get(url,{withCredentials:true});
-
+   setUser(data.user._Json);
    console.log(data);
   }catch(err){
     console.log(err);

@@ -43,32 +43,32 @@ app.use(session({
 
 app.use('/OAuth',authRouter)
 
-app.get('/',(req,res)=>{
-    res.send('<a href="auth/google">sign up with google</a>');
-})
-//for oauth is done for google through passport
+// app.get('/',(req,res)=>{
+//     res.send('<a href="auth/google">sign up with google</a>');
+// })
+// //for oauth is done for google through passport
 
-app.use('/auth/google',
-passport.authenticate('google',{scope:['profile','email']})//we can get profile email and public in from google
-)
+// app.use('/auth/google',
+// passport.authenticate('google',{scope:['profile','email']})//we can get profile email and public in from google
+// )
 
-//this is a callback function this will immediately redirect and call this function
-router.get('/auth/google/callback',
-passport.authenticate('google',{
-    successRedirect:'/dashboard',
-    failureRedirect:'/auth.err'
-})
-)
+// //this is a callback function this will immediately redirect and call this function
+// app.get('/auth/google/callback',
+// passport.authenticate('google',{
+//     successRedirect:'/dashboard',
+//     failureRedirect:'/auth.err'
+// })
+// )
 
-//middlware is set here to validate user
-//google send a code to validate your account 
-app.get('/dashboard',validatelogin,(req, res)=>{
-    res.send('successfully redired to the google OAuth');
-})
+// //middlware is set here to validate user
+// //google send a code to validate your account 
+// app.get('/dashboard',validatelogin,(req, res)=>{
+//     res.send('successfully redired to the google OAuth');
+// })
 
-app.get('/auth/err',(req, res)=>{
-    res.send("unable to verified");
-})
+// app.get('/auth/err',(req, res)=>{
+//     res.send("unable to verified");
+// })
 
 //let make a log out first we have to destroy the session
 app.get('/dashboard/logout',(req, res)=>{

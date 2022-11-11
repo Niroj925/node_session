@@ -1,6 +1,7 @@
 import GoogleStrategy from 'passport-google-oauth20';
 import passport from 'passport';
 import 'dotenv/config';
+
 //to communiacte with google api we have to do this 
 //this is a middleware
 const{GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET}=process.env;
@@ -8,26 +9,24 @@ const{GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET}=process.env;
 passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:8080/auth/google/callback"
+    callbackURL: "http://localhost:8080/auth/google/callback",
+    passReqToCallback:true
   },
   //this function is immediately after verified gmail id
 
-  function(accessToken, refreshToken, profile, cb) {
-   // User.findOrCreate({ googleId: profile.id }, function (err, user) {
-       console.log(profile);
-      return cb(null,profile);
-   // });
+  function(request, accessToken, refreshToken, profile, done) {
+   return done(null,profile);
   }
 ));
 
 //to read and write from passport we have to do serialize and deserialize 
-//now we can get some datas of sign in emial's 
-passport.serializeUser(function(user, cb) {
- return cb(null, user);
+//now we can get some datas of sign in email's 
+passport.serializeUser(function(user, done) {
+ return done(null, user);
 });
 
-passport.deserializeUser(function(user, cb) {
+passport.deserializeUser(function(user, done) {
 
-   return cb(null, user);
+   return done(null, user);
   
 });

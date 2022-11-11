@@ -9,7 +9,7 @@ function Home(userDetails) {
 
     const logout=()=>{
         window.open(
-            `${process.env.BASE_URL_API}/auth/google`,
+            `${process.env.BASE_URL_API}/auth/logout`,
             "_self"
         )
     }

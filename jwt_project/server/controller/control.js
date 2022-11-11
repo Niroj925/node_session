@@ -19,13 +19,13 @@ export default class AuthController {
                 //comapre with previously set credentials
                 const match=bcrypt.compareSync(req.body.password,response.password);
                 if(match){
-                    //jwt 
-                    //the main concept of jwt is generate a token and verify it in backend in each time
+                    //after match we make jwt token and sent to the frontend and verified it into backend in each request
+                    //the main concept of jwt is generate a token and verify it in backend in each request
                     //let's make a 
                     //we can kept any data  here id and another is a string and 
                   const token=  jwt.sign({id:response.id},process.env.JWT_SECRET,
                     { 
-                       expiresIn:"2 days",   //this is for validation of generated token which is in ms
+                       expiresIn:"2 hours",   //this is for validation of generated token which is in ms
                     })
                     //set the token value in sequelize database and respond this
                     //in sequelize all the data are set into the data values
