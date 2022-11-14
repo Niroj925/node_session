@@ -14,7 +14,7 @@ function Home(userDetails) {
         )
     }
   return (
-    <div classnName="contianer">
+    <div className="contianer">
       <h1>Home Page</h1><br/>
 <Formik 
       initialValues={{email:"", password:""}}
@@ -34,7 +34,7 @@ function Home(userDetails) {
               <Textfield type="email" name="email" defaultValues={user.name}/> <br/>
               <label>Password:</label><br/>
               <Textfield type="text" name="input" values={user.input}/><br/>
-              <button type='submit' classnName='google_auth' onClick={logout}>
+              <button type='submit' className='google_auth' onClick={logout}>
                Log Out
               </button>
              <p>

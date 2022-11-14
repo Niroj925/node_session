@@ -12,7 +12,7 @@ function signup() {
         )
     }
   return (
-    <div classnName="contianer">
+    <div className="contianer">
       <h1>SignUp Form</h1><br/>
 <Formik 
       initialValues={{email:"", password:""}}
@@ -36,7 +36,7 @@ function signup() {
               <Textfield type="password" name="password" values=''/><br/>
               <button type="submit">Sign Up</button>
               <p className='text'>or</p>
-              <button classnName='google_auth' onClick={googleAuth}>
+              <button className='google_auth' onClick={googleAuth}>
                 <span>sign up with google</span>
               </button>
              <p>

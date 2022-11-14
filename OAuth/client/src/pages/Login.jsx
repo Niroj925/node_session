@@ -18,7 +18,7 @@ const check=async()=>{
   console.log(data);
 }
   return (
-    <div classnName="contianer">
+    <div className="contianer">
 
 <Formik 
       initialValues={{email:"", password:""}}
@@ -40,7 +40,7 @@ const check=async()=>{
               <Textfield type="password" name="password" values=''/><br/>
               <input type="submit"/>
               <p className='text'>or</p>
-              <button classnName='google_auth' onClick={googleAuth}>
+              <button className='google_auth' onClick={googleAuth}>
                 <span>sign in with google</span>
               </button>
              <p>

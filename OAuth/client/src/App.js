@@ -6,15 +6,17 @@ import axios from 'axios';
 import Home from "./pages/Logout";
 import Login from "./pages/Login";
 import SignUp from "./pages/Signup";
+import Profile from "./pages/Profile";
 
 function App() {
   const [user,setUser]=useState(null);
   const getUser=async ()=>{
     try{
-    const url='http://localhost:8080/OAuth/login/success'
+    const url='http://localhost:8080/auth/login/success'
    const {data}= await axios.get(url,{withCredentials:true});
    setUser(data.user._Json);
    console.log(data);
+   console.log("user:"+user);
   }catch(err){
     console.log(err);
   }
@@ -24,7 +26,7 @@ useEffect(()=>{
   getUser();
 },[])
   return (
-    <div classnName="container">
+    <div className="container">
       <Router>
 <Routes>
   <Route
@@ -42,6 +44,12 @@ useEffect(()=>{
   path='/signup'
   element={user?<Navigate to='/'/>:<SignUp/>}
   />  
+  <Route
+  exact
+  path='/profile'
+  // element={user?<Profile/>:<Navigate to='/'/>}
+  element={<Profile/>}
+  />
 
 </Routes>
 </Router>

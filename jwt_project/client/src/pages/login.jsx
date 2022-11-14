@@ -11,9 +11,10 @@ const Login = () => {
   const loginSubmit = async (e) => {
     e.preventDefault();
 
+    //vaidate to the email and password 
     const response = await api.post("/auth", { email, password });
     console.log(response);
-
+//if get token store at local storage 
     if (response.data.token) {
       localStorage.setItem("token", response.data.token);
       navigate.to("/dashboard");

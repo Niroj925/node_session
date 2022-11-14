@@ -3,24 +3,29 @@ import passport from 'passport';
 
 const router=Router();
 
-router.get('/',(req,res)=>{
-    const response={"success":"hit server"}
-res.json(response)
-console.log(response)
+ //let's make a middleware to validate 
+ const validatelogin=(req, res,next) => {
+    //if user exist
+    req.user?next():res.sendStatus(401)//401 mean unauthorize
 }
-);
 
-router.get("/login/success",(req,res)=>{
+//set middlware before login session 
+router.get("/login/success",validatelogin,(req,res)=>{
+    console.log("user email:"+req.user.displayName)
     if(req.user){
         res.status(200).json({
             error:false,
             msg:"successfully login",
-            user:req.user
+            user:req.user,
             //cookies:req.cookies
             //jwt
+           
         })
+       
+        console.log("authorized")
     }else{
         res.status(403).json({error:true,msg:"user not authorized"})
+        console.log("unauthorized")
     }
 
 })
@@ -38,13 +43,20 @@ passport.authenticate("google",{scope:['profile','email']}))
 //this is a callback function this will immediately redirect and call this function
 router.get('/google/callback',
 passport.authenticate('google',{
-    successRedirect:'http://localhost:3000/login' ,
+    successRedirect:'http://localhost:3000/profile',
     failureRedirect:'/login/failed'
 })
 )
 
 router.get('/logout',(req,res)=>{
-    req.logout();
+    req.logout((err)=>{
+       if(err) throw err;
+       else{
+        req.session.destroy();
+        res.redirect("/");
+       } 
+})
+
     res.redirect('http://localhost:3000')
 })
 
