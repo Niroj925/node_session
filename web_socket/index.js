@@ -41,6 +41,6 @@ socket.on('chat message',(data)=> {
   });
 
   
-  server.listen(8080, () => {
+  server.listen(8000, () => {
     console.log('server is running');
   });
